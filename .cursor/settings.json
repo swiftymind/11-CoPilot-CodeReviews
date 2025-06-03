@@ -1,0 +1,277 @@
+{
+  "cursor.settings": {
+    "description": "Cursor IDE configuration for iOS Swift/SwiftUI development with GitHub Copilot integration",
+
+    // GitHub Copilot Configuration
+    "github.copilot.enable": {
+      "*": true,
+      "yaml": true,
+      "plaintext": true,
+      "markdown": true,
+      "swift": true,
+      "objective-c": true,
+      "json": true,
+      "xml": true
+    },
+
+    // Copilot suggestions settings
+    "github.copilot.inlineSuggest.enable": true,
+    "github.copilot.chat.localeOverride": "en",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.editor.enableCodeActions": true,
+
+    // Swift language settings
+    "swift.languageServer.enable": true,
+    "swift.sourcekit.enable": true,
+    "swift.formatting.enable": true,
+
+    // iOS specific file associations
+    "files.associations": {
+      "*.swift": "swift",
+      "*.h": "objective-c",
+      "*.m": "objective-c",
+      "*.mm": "objective-cpp",
+      "*.storyboard": "xml",
+      "*.xib": "xml",
+      "*.plist": "xml",
+      "*.xcconfig": "shellscript",
+      "*.entitlements": "xml",
+      "Podfile": "ruby",
+      "Fastfile": "ruby",
+      "*.gyb": "swift"
+    },
+
+    // Editor settings for Swift development
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+
+    // Swift specific editor settings
+    "[swift]": {
+      "editor.defaultFormatter": "swift.sourcekit-lsp",
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true,
+      "editor.rulers": [80, 120],
+      "editor.wordWrap": "wordWrapColumn",
+      "editor.wordWrapColumn": 120,
+      "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
+
+    // Objective-C settings
+    "[objective-c]": {
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true,
+      "editor.rulers": [80, 120]
+    },
+
+    // Files to exclude from search and explorer
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/build": true,
+      "**/DerivedData": true,
+      "**/*.xcworkspace/xcuserdata": true,
+      "**/*.xcodeproj/xcuserdata": true,
+      "**/*.xcodeproj/project.xcworkspace/xcuserdata": true,
+      "**/Pods": true,
+      "**/Carthage": true,
+      "**/.swiftpm": true
+    },
+
+    // Search exclusions
+    "search.exclude": {
+      "**/build": true,
+      "**/DerivedData": true,
+      "**/Pods": true,
+      "**/Carthage": true,
+      "**/.swiftpm": true,
+      "**/Package.resolved": true
+    },
+
+    // Git settings for iOS projects
+    "git.ignoreLimitWarning": true,
+    "git.detectSubmodules": false,
+
+    // Terminal settings
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.env.osx": {
+      "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer"
+    },
+
+    // Extensions and tools
+    "extensions.recommendations": [
+      "GitHub.copilot",
+      "GitHub.copilot-chat",
+      "swift.sourcekit-lsp",
+      "ms-vscode.vscode-json"
+    ],
+
+    // Copilot chat configuration
+    "github.copilot.chat.welcomeMessage": "never",
+    "github.copilot.chat.followUps": "on",
+
+    // Auto-save settings
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+
+    // Minimap settings
+    "editor.minimap.enabled": true,
+    "editor.minimap.showSlider": "always",
+
+    // Breadcrumbs
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.showFiles": true,
+    "breadcrumbs.showSymbols": true,
+
+    // Error lens (if extension is installed)
+    "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+    "errorLens.followCursor": "allLines",
+
+    // Themes and appearance
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "vs-seti",
+
+    // IntelliSense settings
+    "editor.suggestSelection": "first",
+    "editor.suggest.localityBonus": true,
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.acceptSuggestionOnEnter": "on",
+
+    // Debugging settings
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.showInStatusBar": "onFirstSessionStart"
+  },
+
+  "swift_snippets": {
+    "description": "Custom Swift/SwiftUI snippets for faster development",
+
+    "SwiftUI View": {
+      "prefix": "swiftui-view",
+      "body": [
+        "import SwiftUI",
+        "",
+        "struct ${1:ViewName}: View {",
+        "    var body: some View {",
+        "        ${2:Text(\"Hello, World!\")}",
+        "    }",
+        "}",
+        "",
+        "#Preview {",
+        "    ${1:ViewName}()",
+        "}"
+      ],
+      "description": "Create a basic SwiftUI View"
+    },
+
+    "SwiftUI ObservableObject": {
+      "prefix": "observable-object",
+      "body": [
+        "import SwiftUI",
+        "import Combine",
+        "",
+        "class ${1:ViewModel}: ObservableObject {",
+        "    @Published var ${2:property}: ${3:String} = \"\"",
+        "    ",
+        "    init() {",
+        "        ${4:// Initialize}",
+        "    }",
+        "}"
+      ],
+      "description": "Create an ObservableObject class"
+    },
+
+    "Swift Property Wrapper": {
+      "prefix": "property-wrapper",
+      "body": [
+        "@propertyWrapper",
+        "struct ${1:WrapperName} {",
+        "    private var value: ${2:T}",
+        "    ",
+        "    var wrappedValue: ${2:T} {",
+        "        get { value }",
+        "        set { value = newValue }",
+        "    }",
+        "    ",
+        "    init(wrappedValue: ${2:T}) {",
+        "        self.value = wrappedValue",
+        "    }",
+        "}"
+      ],
+      "description": "Create a property wrapper"
+    },
+
+    "Async Function": {
+      "prefix": "async-func",
+      "body": [
+        "func ${1:functionName}() async throws -> ${2:ReturnType} {",
+        "    ${3:// Implementation}",
+        "}"
+      ],
+      "description": "Create an async function"
+    },
+
+    "SwiftUI Navigation": {
+      "prefix": "navigation-view",
+      "body": [
+        "NavigationStack {",
+        "    ${1:content}",
+        "        .navigationTitle(\"${2:Title}\")",
+        "        .navigationBarTitleDisplayMode(.${3:large})",
+        "}"
+      ],
+      "description": "Create NavigationStack with title"
+    }
+  },
+
+  "cursor_commands": {
+    "description": "Useful Cursor commands for iOS development",
+
+    "ios_project_setup": "@cursor set up an iOS project with SwiftUI, including proper folder structure, Info.plist, and basic app architecture",
+
+    "swiftui_component": "@cursor create a SwiftUI component with proper state management and accessibility support",
+
+    "ios_networking": "@cursor implement iOS networking with URLSession, async/await, and proper error handling",
+
+    "core_data_setup": "@cursor set up Core Data stack with SwiftUI integration and proper data modeling",
+
+    "ios_testing": "@cursor create unit tests and UI tests for iOS app with XCTest framework",
+
+    "accessibility_audit": "@cursor audit this SwiftUI view for accessibility compliance and suggest improvements",
+
+    "performance_optimization": "@cursor analyze this iOS code for performance issues and suggest optimizations",
+
+    "memory_management": "@cursor review this Swift code for potential memory leaks and retain cycles"
+  },
+
+  "copilot_prompts": {
+    "description": "Effective prompts for GitHub Copilot in iOS development",
+
+    "context_setup": [
+      "// iOS App using SwiftUI and Swift 5.9+",
+      "// Target: iOS 15.0+",
+      "// Architecture: MVVM with Combine",
+      "// Dependencies: None/SPM packages"
+    ],
+
+    "swiftui_patterns": [
+      "// SwiftUI best practices:",
+      "// - Use @State for local view state",
+      "// - Use @StateObject for view models",
+      "// - Use @ObservedObject for passed objects",
+      "// - Use @EnvironmentObject for shared state"
+    ],
+
+    "async_patterns": [
+      "// Modern Swift concurrency:",
+      "// - Use async/await for networking",
+      "// - Use Task for background work",
+      "// - Use @MainActor for UI updates"
+    ]
+  }
+}
